@@ -1,0 +1,56 @@
+<form
+  class="form"
+  #authForm="ngForm"
+  (ngSubmit)="onSubmit(authForm)"
+>
+  <h4>Please enter your<span *ngIf="mode === 'newAccount'"> user name,</span> email and password</h4>
+  <div
+    *ngIf="mode === 'newAccount'"
+    class="mb-3">
+    <label for="username" class="form-label">User name</label>
+    <input
+      class="form-control"
+      [(ngModel)]="emailInputValue"
+      name="username"
+      id="username"
+      type="text"
+      minlength="8"
+      required
+      [pattern]="usernamePattern"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      class="form-control"
+      ngModel
+      name="email"
+      id="email"
+      type="email"
+      required
+      email
+      [pattern]="emailPattern"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      class="form-control"
+      ngModel
+      name="password"
+      id="password"
+      type="password"
+      required
+      minlength="5"
+      [pattern]="passwordPattern"
+    />
+  </div>
+
+  <button mat-flat-button color="primary" [disabled]="authForm.invalid">
+    {{mode === 'login' ? 'Sign in' : 'Sign up'}}
+  </button>
+  <button mat-stroked-button type="button" (click)="onCreateNewAccount()">
+    {{mode === 'login' ? 'Create new account' : 'Switch to login'}}
+  </button>
+</form>
+

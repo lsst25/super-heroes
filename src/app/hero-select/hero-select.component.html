@@ -1,0 +1,21 @@
+<form class="form">
+  <h2>Select a hero</h2>
+  <label for="search" class="form-label">Enter a search term</label>
+  <div class="input-group mb-3">
+    <input
+      ngModel
+      class="form-control"
+      name="search"
+      id="search"
+      type="text"
+      [pattern]="searchPattern"
+    />
+    <button type="button" mat-flat-button color="primary">Search</button>
+  </div>
+  <div class="mb-3"></div>
+  <output>
+    <ul>
+      <li>Hero</li>
+    </ul>
+  </output>
+</form>
