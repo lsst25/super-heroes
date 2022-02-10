@@ -1,21 +1,77 @@
-<form class="form">
-  <h2>Select a hero</h2>
-  <label for="search" class="form-label">Enter a search term</label>
+<form (ngSubmit)="onSubmit(searchForm)" #searchForm="ngForm" class="form">
+  <label for="search" class="form-label">Find hero</label>
   <div class="input-group mb-3">
+    <app-alphabetical (letter)="onLetterSelected($event)"></app-alphabetical>
     <input
+      #input
       ngModel
       class="form-control"
       name="search"
       id="search"
       type="text"
+      placeholder="Enter the hero name"
+      required
       [pattern]="searchPattern"
     />
-    <button type="button" mat-flat-button color="primary">Search</button>
+    <button mat-flat-button color="primary" [disabled]="searchForm.invalid">
+      Search
+    </button>
   </div>
+  <!--    Recent searches-->
+  <mat-chip-list aria-label="Recent searches">
+    <mat-chip *ngFor="let term of recentSearches" (click)="search(term)">
+      {{ term }}
+    </mat-chip>
+  </mat-chip-list>
+  <!--          ---------------------------------------                      -->
   <div class="mb-3"></div>
   <output>
-    <ul>
-      <li>Hero</li>
+    <h4>Results:</h4>
+    <ul class="search-result">
+      <li *ngFor="let hero of heroes">
+        <div class="card">
+          <div class="card-body">
+            <div>
+              <h5>{{ hero.name }}</h5>
+              <img
+                [src]="hero.image.url"
+                class="img-fluid img-thumbnail rounded float-start"
+                alt="Hero image"
+              />
+            </div>
+            <ul class="stats-list">
+              <li *ngIf="hero.powerstats.intelligence !== 'null'">
+                Intelligence: {{ hero.powerstats.intelligence }}
+              </li>
+              <li *ngIf="hero.powerstats.strength !== 'null'">
+                Strength: {{ hero.powerstats.strength }}
+              </li>
+              <li *ngIf="hero.powerstats.speed !== 'null'">
+                Speed: {{ hero.powerstats.speed }}
+              </li>
+              <li *ngIf="hero.powerstats.durability !== 'null'">
+                Durability: {{ hero.powerstats.durability }}
+              </li>
+              <li *ngIf="hero.powerstats.power !== 'null'">
+                Power: {{ hero.powerstats.power }}
+              </li>
+              <li *ngIf="hero.powerstats.combat !== 'null'">
+                Combat: {{ hero.powerstats.combat }}
+              </li>
+            </ul>
+            <button
+              mat-flat-button
+              type="button"
+              color="primary"
+              class="card_button"
+              [disabled]="heroIsSelected(hero.id)"
+              (click)="onSelectHero(hero.id)"
+            >
+              Select
+            </button>
+          </div>
+        </div>
+      </li>
     </ul>
   </output>
 </form>

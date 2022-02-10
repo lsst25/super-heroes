@@ -17,6 +17,10 @@ import { BattleComponent } from './battle/battle.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { AlertComponent } from './shared/alert/alert.component';
 import { HeroSearchComponent } from './hero-select/hero-search/hero-search.component';
+import {MatChipsModule} from "@angular/material/chips";
+import {HttpClientModule} from "@angular/common/http";
+import {MatCardModule} from "@angular/material/card";
+import { AlphabeticalComponent } from './hero-select/alphabetical/alphabetical.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +32,7 @@ import { HeroSearchComponent } from './hero-select/hero-search/hero-search.compo
     UserInfoComponent,
     AlertComponent,
     HeroSearchComponent,
+    AlphabeticalComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +44,9 @@ import { HeroSearchComponent } from './hero-select/hero-search/hero-search.compo
     MatRippleModule,
     MatInputModule,
     FormsModule,
+    MatChipsModule,
+    HttpClientModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent],

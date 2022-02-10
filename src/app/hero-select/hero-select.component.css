@@ -12,6 +12,36 @@ li {
   list-style: none;
 }
 
-input.ng-invalid {
+input.ng-invalid.ng-touched.ng-dirty {
   border: 1px solid red;
+}
+
+output {
+  width: 100%;
+}
+
+img {
+  max-height: 100px;
+}
+
+.card {
+  width: 100%;
+}
+
+.card-body {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stats-list {
+
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+}
+
+.card_button {
+  align-self: end;
 }
