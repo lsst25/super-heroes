@@ -4,7 +4,7 @@ import { FetchHeroesService } from '../fetch-heroes.service';
 import { NgForm } from '@angular/forms';
 import { HeroStoreService } from '../hero-store.service';
 import { Letters } from './alphabetical/alphabetical.component';
-import { map } from 'rxjs';
+import { map} from 'rxjs';
 
 @Component({
   selector: 'app-hero-select',
@@ -67,6 +67,9 @@ export class HeroSelectComponent {
       )
       .subscribe((heroes) => {
         this.heroes = heroes;
-      });
+      },
+        error => {
+          console.log(error)
+        });
   }
 }

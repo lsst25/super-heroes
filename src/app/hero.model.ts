@@ -12,4 +12,7 @@ export interface Hero {
     power: string;
     combat: string;
   }
+  biography: {
+    'full-name': string
+  }
 }

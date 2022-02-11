@@ -26,6 +26,11 @@ import { HistoryComponent } from './user-info/history/history.component';
 import { PowerupsComponent } from './user-info/powerups/powerups.component';
 import {MatTabsModule} from "@angular/material/tabs";
 import { HeroCardComponent } from './hero-card/hero-card.component';
+import { BattleHeroComponent } from './battle/battle-hero/battle-hero.component';
+import { BattleMenuComponent } from './battle/battle-menu/battle-menu.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatTableModule} from "@angular/material/table";
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -42,6 +47,8 @@ import { HeroCardComponent } from './hero-card/hero-card.component';
     HistoryComponent,
     PowerupsComponent,
     HeroCardComponent,
+    BattleHeroComponent,
+    BattleMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +63,10 @@ import { HeroCardComponent } from './hero-card/hero-card.component';
     MatChipsModule,
     HttpClientModule,
     MatCardModule,
-    MatTabsModule
+    MatTabsModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent],

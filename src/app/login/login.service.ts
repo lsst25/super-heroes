@@ -9,12 +9,18 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
   private users: User[] = [];
+  private authenticated: boolean = false;
+
   currentUser = new Subject<User | null>();
   error = new Subject<string>();
   registeredUsers: string[] = [];
   sessionDurationLimit = 3.6e6; // 3.6e6 - 1h
 
   constructor(private storageService: StorageService, private router: Router) {}
+
+  get isLoggedIn() {
+    return this.authenticated;
+  }
 
   autoLogin() {
     const userFromStorage: User = this.storageService.getFromStorage('user');
@@ -59,7 +65,7 @@ export class LoginService {
       if (!autologin) {
         this.storageService.addToStorage('token', new Date().getTime());
       }
-
+      this.authenticated = true;
       console.log('User ' + user.username + ' logged in.');
       return true;
     }

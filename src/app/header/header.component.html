@@ -1,7 +1,9 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="toolbar" color="primary">
+
+
   <ul>
     <li>
-      <span>Heroes app</span>
+      <span>Heroes</span>
     </li>
     <li *ngIf="!isLoggedIn" routerLinkActive="active">
       <a mat-button routerLink="login">
@@ -17,9 +19,14 @@
         <span class="mat-button-focus-overlay"></span>
       </a>
     </li>
+  </ul>
+
+  <span class="spacer"></span>
+
+  <ul>
     <li *ngIf="isLoggedIn" routerLinkActive="active">
       <a mat-button routerLink="battle">
-        Battle
+        Fight
         <span mat-ripple class="mat-ripple mat-button-ripple"></span>
         <span class="mat-button-focus-overlay"></span>
       </a>
@@ -28,14 +35,6 @@
 
   <span class="spacer"></span>
   <ul>
-    <li *ngIf="isLoggedIn">
-      <mat-icon
-        class="example-icon"
-        aria-hidden="false"
-        aria-label="Example user verified icon"
-        >verified_user</mat-icon
-      >
-    </li>
     <li *ngIf="isLoggedIn">
       <button mat-button (click)="onLogout()">
         Logout

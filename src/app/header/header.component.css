@@ -18,10 +18,16 @@ li {
   align-items: center;
 }
 
+
 .active {
   background-color: rgba(0, 0, 0, .2);
 }
 
 .spacer {
   flex: 1 1 auto;
+}
+
+.toolbar {
+  display: flex;
+  flex-flow: row wrap;
 }
