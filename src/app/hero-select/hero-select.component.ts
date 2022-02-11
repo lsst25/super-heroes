@@ -40,9 +40,6 @@ export class HeroSelectComponent {
     }
   }
 
-  onSelectHero(id: number) {
-    this.heroStoreService.addSelectedHero(id);
-  }
 
   onSubmit(form: NgForm) {
     const term = form.value.search;
@@ -71,9 +68,5 @@ export class HeroSelectComponent {
       .subscribe((heroes) => {
         this.heroes = heroes;
       });
-  }
-
-  heroIsSelected(id: number) {
-    return this.heroStoreService.isSelected(id);
   }
 }

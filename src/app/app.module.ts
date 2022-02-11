@@ -21,6 +21,11 @@ import {MatChipsModule} from "@angular/material/chips";
 import {HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from "@angular/material/card";
 import { AlphabeticalComponent } from './hero-select/alphabetical/alphabetical.component';
+import { HeroesComponent } from './user-info/heroes/heroes.component';
+import { HistoryComponent } from './user-info/history/history.component';
+import { PowerupsComponent } from './user-info/powerups/powerups.component';
+import {MatTabsModule} from "@angular/material/tabs";
+import { HeroCardComponent } from './hero-card/hero-card.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +38,10 @@ import { AlphabeticalComponent } from './hero-select/alphabetical/alphabetical.c
     AlertComponent,
     HeroSearchComponent,
     AlphabeticalComponent,
+    HeroesComponent,
+    HistoryComponent,
+    PowerupsComponent,
+    HeroCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +55,8 @@ import { AlphabeticalComponent } from './hero-select/alphabetical/alphabetical.c
     FormsModule,
     MatChipsModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

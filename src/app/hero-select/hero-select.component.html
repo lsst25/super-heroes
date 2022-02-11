@@ -26,52 +26,7 @@
   <!--          ---------------------------------------                      -->
   <div class="mb-3"></div>
   <output>
-    <h4>Results:</h4>
-    <ul class="search-result">
-      <li *ngFor="let hero of heroes">
-        <div class="card">
-          <div class="card-body">
-            <div>
-              <h5>{{ hero.name }}</h5>
-              <img
-                [src]="hero.image.url"
-                class="img-fluid img-thumbnail rounded float-start"
-                alt="Hero image"
-              />
-            </div>
-            <ul class="stats-list">
-              <li *ngIf="hero.powerstats.intelligence !== 'null'">
-                Intelligence: {{ hero.powerstats.intelligence }}
-              </li>
-              <li *ngIf="hero.powerstats.strength !== 'null'">
-                Strength: {{ hero.powerstats.strength }}
-              </li>
-              <li *ngIf="hero.powerstats.speed !== 'null'">
-                Speed: {{ hero.powerstats.speed }}
-              </li>
-              <li *ngIf="hero.powerstats.durability !== 'null'">
-                Durability: {{ hero.powerstats.durability }}
-              </li>
-              <li *ngIf="hero.powerstats.power !== 'null'">
-                Power: {{ hero.powerstats.power }}
-              </li>
-              <li *ngIf="hero.powerstats.combat !== 'null'">
-                Combat: {{ hero.powerstats.combat }}
-              </li>
-            </ul>
-            <button
-              mat-flat-button
-              type="button"
-              color="primary"
-              class="card_button"
-              [disabled]="heroIsSelected(hero.id)"
-              (click)="onSelectHero(hero.id)"
-            >
-              Select
-            </button>
-          </div>
-        </div>
-      </li>
-    </ul>
+    <h4 *ngIf="heroes.length > 0">Results:</h4>
+    <app-hero-card *ngFor="let hero of heroes" [hero]="hero"></app-hero-card>
   </output>
 </form>

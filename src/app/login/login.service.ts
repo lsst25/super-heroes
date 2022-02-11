@@ -27,7 +27,7 @@ export class LoginService {
     }
 
     if (!tokenIsValid) {
-      this.storageService.removeFromStorage('token', 'user');
+      this.storageService.removeFromStorage('token', 'user', 'selectedHeroes', 'lastSelectedHero');
 
       this.router.navigate(['login']);
       this.error.next(
@@ -70,7 +70,7 @@ export class LoginService {
 
   logout() {
     this.currentUser.next(null);
-    this.storageService.removeFromStorage('user');
+    this.storageService.removeFromStorage('user', 'token', 'selectedHeroes', 'lastSelectedHero');
     this.router.navigate(['login']);
   }
 

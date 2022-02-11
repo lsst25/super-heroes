@@ -1,6 +1,5 @@
-form {
-  max-width: 80%;
-  margin: 20px auto;
+img {
+  max-height: 100px;
 }
 
 ul {
@@ -11,16 +10,6 @@ ul {
 li {
   list-style: none;
 }
-
-input.ng-invalid.ng-touched.ng-dirty {
-  border: 1px solid red;
-}
-
-output {
-  width: 100%;
-}
-
-
 
 .card {
   width: 100%;
@@ -43,3 +32,9 @@ output {
 .card_button {
   align-self: end;
 }
+
+.card.selected {
+  border: 3px solid darkviolet;
+}
+
+

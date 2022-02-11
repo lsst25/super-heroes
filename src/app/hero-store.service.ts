@@ -1,28 +1,40 @@
 import { Injectable } from '@angular/core';
+import {Hero} from "./hero.model";
+import {StorageService} from "./storage.service";
 
 @Injectable({
   providedIn: 'root',
 })
 export class HeroStoreService {
-  selectedHeroesIds: number[] = [];
-  lastSelectedHero: number = 0;
+  selectedHeroes: Hero[] = [];
 
-  constructor() {}
+  lastSelectedHero?: Hero;
 
-  addSelectedHero(id: number): void {
-    this.selectedHeroesIds.push(id);
-    this.lastSelectedHero = id;
+  constructor(private storageService: StorageService) {}
+
+  get selectedHeroesIds() {
+    return this.selectedHeroes.map(hero => hero.id);
   }
 
-  isSelected(id: number): boolean {
-    return this.selectedHeroesIds.includes(id);
+  setSelectedHeroes() {
+    this.selectedHeroes = this.storageService.getFromStorage('selectedHeroes') || [];
+    this.lastSelectedHero = this.storageService.getFromStorage('lastSelectedHero' || undefined);
   }
 
-  getSelectedHeroId(): number {
-    return this.lastSelectedHero;
+  reSelectHero(hero: Hero) {
+    this.lastSelectedHero = hero;
+    this.storageService.addToStorage('lastSelectedHero', this.lastSelectedHero);
   }
 
-  getSelectedHeroesIds(): number[] {
-    return [...this.selectedHeroesIds];
+  addSelectedHero(hero: Hero): void {
+    this.selectedHeroes.push(hero);
+    this.lastSelectedHero = hero;
+    this.storageService.addToStorage('lastSelectedHero', this.lastSelectedHero);
+    this.storageService.addToStorage('selectedHeroes', this.selectedHeroes);
   }
+
+  isSelected(hero: Hero): boolean {
+    return this.selectedHeroesIds.includes(hero.id);
+  }
+
 }
