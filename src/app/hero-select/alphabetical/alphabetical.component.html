@@ -1,8 +1,11 @@
-<button mat-mini-fab type="button" color="primary" (click)="onOpenClick()">
-  {{ selectedLetter | uppercase }}
-</button>
-<ul *ngIf="opened">
-  <li *ngFor="let letter of alphabet">
-    <button mat-mini-fab type="button" color="primary" class="select-button" (click)="onSelectClick(letter)">{{ letter }}</button>
-  </li>
-</ul>
+<div class="alphabetical">
+  <button mat-mini-fab type="button" color="primary" (click)="onOpenClick()">
+    {{ selectedLetter | uppercase }}
+  </button>
+  <ul *ngIf="opened">
+    <li *ngFor="let letter of alphabet">
+      <button mat-mini-fab type="button" color="primary" class="select-button" (click)="onSelectClick(letter)">{{ letter }}</button>
+    </li>
+  </ul>
+</div>
+
