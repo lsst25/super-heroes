@@ -14,6 +14,10 @@ export class FetchHeroesService {
 
   url = environment.apiUrl + environment.apiToken;
 
+  fetchHeroById(id: number) {
+    return this.http.get<Hero>('https://superheroapi.com/api.php/2089982224508380/' + id);
+  }
+
   fetchHeroesByName(name: string): Observable<Hero[]> {
     return this.http
       .get<{ response: string; results: []; error?: string }>(

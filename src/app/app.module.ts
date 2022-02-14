@@ -31,6 +31,7 @@ import { BattleMenuComponent } from './battle/battle-menu/battle-menu.component'
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
+import { HeroInfoComponent } from './hero-info/hero-info.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {MatSortModule} from "@angular/material/sort";
     HeroCardComponent,
     BattleHeroComponent,
     BattleMenuComponent,
+    HeroInfoComponent,
   ],
   imports: [
     BrowserModule,

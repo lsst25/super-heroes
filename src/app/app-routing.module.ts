@@ -9,6 +9,7 @@ import { HistoryComponent } from './user-info/history/history.component';
 import { PowerupsComponent } from './user-info/powerups/powerups.component';
 import { LoginGuardService } from './login/login-guard.service';
 import {BattleGuardService} from "./battle/battle.guard.service";
+import {HeroInfoComponent} from "./hero-info/hero-info.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'select', pathMatch: 'full' },
@@ -24,6 +25,11 @@ const routes: Routes = [
     canActivate: [LoginGuardService, BattleGuardService],
   },
   {
+    path: 'hero-info/:id',
+    component: HeroInfoComponent,
+    canActivate: [LoginGuardService],
+  },
+  {
     path: 'user',
     component: UserInfoComponent,
     canActivate: [LoginGuardService],
@@ -34,6 +40,7 @@ const routes: Routes = [
       { path: 'powerups', component: PowerupsComponent },
     ],
   },
+  { path: '**', redirectTo: '/select' }
 ];
 
 @NgModule({

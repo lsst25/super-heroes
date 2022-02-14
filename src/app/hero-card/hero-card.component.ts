@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Hero} from "../hero.model";
 import {HeroStoreService} from "../hero-store.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-hero-card',
@@ -11,7 +12,8 @@ export class HeroCardComponent implements OnInit {
   @Input() hero!: Hero;
   @Input() selected: boolean = false;
   @Input() viewHeroButton: boolean = false;
-  constructor(private heroStoreService: HeroStoreService) { }
+  constructor(private heroStoreService: HeroStoreService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +29,7 @@ export class HeroCardComponent implements OnInit {
   onViewHeroButton(event: Event, hero: Hero) {
     event.stopPropagation();
     console.log(event, hero);
+    this.router.navigate(['hero-info/' + hero.id])
   }
 
 }

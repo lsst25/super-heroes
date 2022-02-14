@@ -1,3 +1,19 @@
 .table {
   width: 100%;
 }
+
+td.mat-column-ownHero {
+  cursor: pointer;
+}
+
+td.mat-column-enemyHero {
+  cursor: pointer;
+}
+
+td.mat-column-ownHero:hover {
+  text-decoration: underline;
+}
+
+td.mat-column-enemyHero:hover {
+  text-decoration: underline;
+}

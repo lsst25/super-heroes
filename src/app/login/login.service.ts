@@ -13,7 +13,6 @@ export class LoginService {
 
   currentUser = new Subject<User | null>();
   error = new Subject<string>();
-  registeredUsers: string[] = [];
   sessionDurationLimit = 3.6e6; // 3.6e6 - 1h
 
   constructor(private storageService: StorageService, private router: Router) {}
@@ -88,20 +87,10 @@ export class LoginService {
     this.users = this.storageService.getFromStorage('users') || [];
   }
 
-  setRegisteredUsers() {
-    this.registeredUsers =
-      this.storageService.getFromStorage('registeredUsers') || [];
-  }
-
   addUser(newUser: User) {
     if (!this.users.find((user: User) => user.email === newUser.email)) {
       this.users.push(newUser);
       this.storageService.addToStorage('users', this.users);
-      this.storageService.addToStorage('registeredUsers', [
-        ...this.registeredUsers,
-        newUser.username,
-      ]);
-      this.registeredUsers.push(newUser.username);
       console.log('New user added.');
       return true;
     }

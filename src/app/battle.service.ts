@@ -8,12 +8,16 @@ export class Battle {
     public winner: string,
     public ownHero: string,
     public enemyHero: string,
-    public date: Date
+    public ownHeroId: number,
+    public enemyHeroId: number,
+    public date: number
   ) {
     this.winner = winner;
     this.ownHero = ownHero;
     this.enemyHero = enemyHero;
     this.date = date;
+    this.ownHeroId = ownHeroId;
+    this.enemyHeroId = enemyHeroId;
   }
 }
 
@@ -29,7 +33,7 @@ export class BattleService {
     const battleResult = Math.random() < 0.5;
     const winner = battleResult ? ownHero : enemyHero;
 
-    this.addBattle(new Battle(winner.name, ownHero.name, enemyHero.name, new Date()));
+    this.addBattle(new Battle(winner.name, ownHero.name, enemyHero.name, ownHero.id, enemyHero.id, new Date().getTime()));
 
     return of(winner).pipe(delay(5000));
   }

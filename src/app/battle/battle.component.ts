@@ -11,8 +11,8 @@ import {BattleService} from "../battle.service";
 })
 export class BattleComponent implements OnInit {
 
-  ownHero?: Hero;
-  enemyHero?: Hero;
+  ownHero!: Hero;
+  enemyHero!: Hero;
 
   fighting = false;
 
@@ -23,7 +23,7 @@ export class BattleComponent implements OnInit {
               private battle: BattleService) { }
 
   ngOnInit(): void {
-    this.ownHero = this.heroStoreService.lastSelectedHero;
+    this.ownHero = this.heroStoreService.lastSelectedHero as Hero;
     this.getRandomHero();
   }
 
@@ -48,7 +48,6 @@ export class BattleComponent implements OnInit {
   getRandomHero() {
     this.fetchHeroService.fetchRandomHero().subscribe(
       (hero: Hero) => {
-        console.log(hero);
         this.enemyHero = hero;
       }
     );

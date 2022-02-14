@@ -23,12 +23,11 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.loginService.setRegisteredUsers();
     this.loginService.setUsers();
     this.heroStoreService.setSelectedHeroes();
     this.battleService.setBattles();
 
-    this.errorSub = this.loginService.error.subscribe((message) => {
+    this.errorSub = this.loginService.error.subscribe((message: string) => {
       this.error = message;
     });
 
