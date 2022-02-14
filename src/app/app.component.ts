@@ -3,6 +3,7 @@ import { LoginService } from './login/login.service';
 import { HeroStoreService } from './hero-store.service';
 import { BattleService } from './battle.service';
 import { Subscription } from 'rxjs';
+import {User} from "./user.model";
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'trainee-heroes-app';
+  user: User | null = null;
   error: string | null = null;
   errorSub?: Subscription;
 
@@ -29,6 +31,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this.errorSub = this.loginService.error.subscribe((message) => {
       this.error = message;
     });
+
+    this.loginService.currentUser.subscribe(user => {
+      this.user = user;
+    })
   }
 
   onErrorClose() {

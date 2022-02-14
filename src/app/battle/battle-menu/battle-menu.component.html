@@ -12,7 +12,17 @@
   <p class="hero-name">{{ enemyHero }}</p>
 
   <div class="powerups">
-    <p>Powerups:</p>
+    <p class="powerups-title">Powerups:</p>
+
+    <ul>
+      <li
+        *ngFor="let powerup of powerups; index as i"
+        [ngClass]="{ selected: isSelectedPowerup(i) }"
+        (click)="onSelectPowerup(i)"
+      >
+        <p>{{ powerup.title }}</p>
+      </li>
+    </ul>
   </div>
   <div *ngIf="fighting" style="text-align: center" class="spinner">
     <mat-spinner></mat-spinner>

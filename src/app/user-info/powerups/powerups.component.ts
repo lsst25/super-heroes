@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HeroStoreService, Powerup} from "../../hero-store.service";
 
 @Component({
   selector: 'app-powerups',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PowerupsComponent implements OnInit {
 
-  constructor() { }
+  powerups?: Powerup[] = []
+
+  constructor(private heroStoreService: HeroStoreService) { }
 
   ngOnInit(): void {
+    this.powerups = [...this.heroStoreService.powerups];
   }
 
 }

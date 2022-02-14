@@ -33,8 +33,12 @@ export class BattleComponent implements OnInit {
 
   onFight() {
     this.fighting = true;
+    this.heroStoreService.selectedPowerupsIds.forEach(powerupId => {
+      this.heroStoreService.usePowerup(powerupId);
+    });
+    this.heroStoreService.selectedPowerups = [];
     this.battle.battle(this.ownHero as Hero, this.enemyHero as Hero).subscribe((winner: Hero) => {
-      console.log(winner.name);
+
       this.winner = winner.name + ' won the fight!';
       this.fighting = false;
     })
