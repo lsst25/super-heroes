@@ -1,20 +1,27 @@
 <div class="menu">
-  <p class="hero-name">{{ ownHeroName }}</p>
+  <div class="hero-name mat-elevation-z6">
+    <p>{{ ownHeroName }}</p>
+  </div>
+
   <button
     mat-raised-button
+    class="mat-elevation-z6"
     color="primary"
     type="button"
     (click)="onStart()"
     [disabled]="fighting"
   >
-    Start
+      Start
   </button>
-  <p class="hero-name">{{ enemyHero }}</p>
 
-  <div class="powerups">
+  <div class="hero-name mat-elevation-z6">
+    <p>{{ enemyHero }}</p>
+  </div>
+
+  <div class="powerups mat-elevation-z6">
     <p class="powerups-title">Powerups:</p>
 
-    <ul>
+    <ul class="powerups-list">
       <li
         *ngFor="let powerup of powerups; index as i"
         [ngClass]="{ selected: isSelectedPowerup(i) }"

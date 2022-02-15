@@ -30,4 +30,21 @@ li {
 .toolbar {
   display: flex;
   flex-flow: row wrap;
+  margin-bottom: 10px;
+}
+
+.title {
+  display: none;
+}
+.mat-toolbar {
+  padding: 0;
+}
+
+@media (min-width: 576px) {
+  .title {
+    display: inherit;
+  }
+  .mat-toolbar {
+    padding: 0 16px;
+  }
 }

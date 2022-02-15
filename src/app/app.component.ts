@@ -15,6 +15,7 @@ export class AppComponent implements OnInit, OnDestroy {
   user: User | null = null;
   error: string | null = null;
   errorSub?: Subscription;
+  userSub?: Subscription;
 
   constructor(
     private loginService: LoginService,
@@ -31,7 +32,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.error = message;
     });
 
-    this.loginService.currentUser.subscribe(user => {
+    this.userSub = this.loginService.currentUser.subscribe(user => {
       this.user = user;
     })
   }
@@ -43,6 +44,10 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.errorSub) {
       this.errorSub.unsubscribe();
+    }
+
+    if (this.userSub) {
+      this.userSub.unsubscribe();
     }
   }
 }

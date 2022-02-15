@@ -1,12 +1,27 @@
-<app-alert *ngIf="winner" [message]="winner" (close)="onResultsClose()"></app-alert>
+<app-alert
+  *ngIf="winner"
+  [message]="winner"
+  (close)="onResultsClose()"
+></app-alert>
 <div class="row">
-  <div class="col">
-    <app-battle-hero [routerLink]="'/hero-info/' + ownHero.id" [hero]="ownHero"></app-battle-hero>
+  <div class="col order-1 order-sm-1">
+    <app-battle-hero
+      [routerLink]="'/hero-info/' + ownHero.id"
+      [hero]="ownHero"
+    ></app-battle-hero>
   </div>
-  <div class="col">
-    <app-battle-menu [fighting]="fighting" (fight)="onFight()" [ownHeroName]="ownHero?.name || ''" [enemyHero]="enemyHero?.name || ''"></app-battle-menu>
+  <div class="col-12 col-sm-4 order-3 order-sm-2">
+    <app-battle-menu
+      [fighting]="fighting"
+      (fight)="onFight()"
+      [ownHeroName]="ownHero?.name || ''"
+      [enemyHero]="enemyHero?.name || ''"
+    ></app-battle-menu>
   </div>
-  <div class="col">
-    <app-battle-hero [routerLink]="'/hero-info/' + enemyHero?.id" [hero]="enemyHero"></app-battle-hero>
+  <div class="col order-2 order-sm-3">
+    <app-battle-hero
+      [routerLink]="'/hero-info/' + enemyHero?.id"
+      [hero]="enemyHero"
+    ></app-battle-hero>
   </div>
 </div>
