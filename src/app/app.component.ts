@@ -3,7 +3,7 @@ import { LoginService } from './login/login.service';
 import { HeroStoreService } from './hero-store.service';
 import { BattleService } from './battle.service';
 import { Subscription } from 'rxjs';
-import {User} from "./user.model";
+import { User } from './user.model';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private battleService: BattleService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loginService.setUsers();
     this.heroStoreService.setSelectedHeroes();
     this.battleService.setBattles();
@@ -32,16 +32,18 @@ export class AppComponent implements OnInit, OnDestroy {
       this.error = message;
     });
 
-    this.userSub = this.loginService.currentUser.subscribe(user => {
-      this.user = user;
-    })
+    this.userSub = this.loginService.currentUser.subscribe(
+      (user: User | null) => {
+        this.user = user;
+      }
+    );
   }
 
-  onErrorClose() {
+  onErrorClose(): void {
     this.error = null;
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.errorSub) {
       this.errorSub.unsubscribe();
     }

@@ -1,35 +1,33 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Hero} from "../hero.model";
-import {HeroStoreService} from "../hero-store.service";
-import {Router} from "@angular/router";
+import { Component, Input } from '@angular/core';
+import { Hero } from '../hero.model';
+import { HeroStoreService } from '../hero-store.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hero-card',
   templateUrl: './hero-card.component.html',
-  styleUrls: ['./hero-card.component.css']
+  styleUrls: ['./hero-card.component.css'],
 })
-export class HeroCardComponent implements OnInit {
+export class HeroCardComponent {
   @Input() hero!: Hero;
-  @Input() selected: boolean = false;
-  @Input() viewHeroButton: boolean = false;
-  constructor(private heroStoreService: HeroStoreService,
-              private router: Router) { }
+  @Input() selected = false;
+  @Input() viewHeroButton = false;
 
-  ngOnInit(): void {
-  }
+  constructor(
+    private heroStoreService: HeroStoreService,
+    private router: Router
+  ) {}
 
-  onSelectHero(hero: Hero) {
+  onSelectHero(hero: Hero): void {
     this.heroStoreService.addSelectedHero(hero);
   }
 
-  heroIsSelected(hero: Hero) {
+  heroIsSelected(hero: Hero): boolean {
     return this.heroStoreService.isSelected(hero);
   }
 
-  onViewHeroButton(event: Event, hero: Hero) {
+  onViewHeroButton(event: Event, hero: Hero): void {
     event.stopPropagation();
-    console.log(event, hero);
-    this.router.navigate(['hero-info/' + hero.id])
+    this.router.navigate(['hero-info/' + hero.id]);
   }
-
 }

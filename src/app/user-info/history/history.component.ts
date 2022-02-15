@@ -1,16 +1,14 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {Battle, BattleService} from "../../battle.service";
-import {MatSort} from "@angular/material/sort";
-import {MatTableDataSource} from "@angular/material/table";
-
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Battle, BattleService } from '../../battle.service';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
-  styleUrls: ['./history.component.css']
+  styleUrls: ['./history.component.css'],
 })
 export class HistoryComponent implements OnInit, AfterViewInit {
-
   battleHistory: Battle[] = [];
   dataSource = new MatTableDataSource(this.battleService.battles);
 
@@ -18,18 +16,13 @@ export class HistoryComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['date', 'ownHero', 'enemyHero', 'winner'];
 
-  constructor(private battleService: BattleService) { }
+  constructor(private battleService: BattleService) {}
 
   ngOnInit(): void {
     this.battleHistory = this.battleService.battles;
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
   }
-
-  onHeaderClick() {
-    console.log('click')
-  }
-
 }

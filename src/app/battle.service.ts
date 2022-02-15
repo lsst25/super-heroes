@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Hero } from './hero.model';
-import { delay, of } from 'rxjs';
+import {delay, Observable, of} from 'rxjs';
 import {StorageService} from "./storage.service";
 
 export class Battle {
@@ -29,7 +29,7 @@ export class BattleService {
 
   constructor(private storage: StorageService) {}
 
-  battle(ownHero: Hero, enemyHero: Hero) {
+  battle(ownHero: Hero, enemyHero: Hero): Observable<Hero> {
     const battleResult = Math.random() < 0.5;
     const winner = battleResult ? ownHero : enemyHero;
 
@@ -38,12 +38,12 @@ export class BattleService {
     return of(winner).pipe(delay(5000));
   }
 
-  addBattle(battle: Battle) {
+  addBattle(battle: Battle): void {
     this.battles.push(battle);
     this.storage.addToStorage('battles', this.battles);
   }
 
-  setBattles() {
+  setBattles(): void {
     this.battles = this.storage.getFromStorage('battles') || [];
   }
 }

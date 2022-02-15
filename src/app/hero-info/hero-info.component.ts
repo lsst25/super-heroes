@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from "@angular/common";
+import { Location } from '@angular/common';
 import { Hero } from '../hero.model';
 import { ActivatedRoute } from '@angular/router';
 import { FetchHeroesService } from '../fetch-heroes.service';
@@ -10,7 +10,7 @@ import { FetchHeroesService } from '../fetch-heroes.service';
   styleUrls: ['./hero-info.component.css'],
 })
 export class HeroInfoComponent implements OnInit {
-  hero: Hero | undefined;
+  hero?: Hero;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,6 +29,6 @@ export class HeroInfoComponent implements OnInit {
     }
     this.fetchHeroesService
       .fetchHeroById(id)
-      .subscribe((hero) => (this.hero = hero));
+      .subscribe((hero: Hero) => (this.hero = hero));
   }
 }

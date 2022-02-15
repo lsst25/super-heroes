@@ -1,18 +1,20 @@
-import { Component, ViewChild } from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { Hero } from '../hero.model';
 import { FetchHeroesService } from '../fetch-heroes.service';
 import { NgForm } from '@angular/forms';
-import { HeroStoreService } from '../hero-store.service';
 import { Letters } from './alphabetical/alphabetical.component';
-import { map} from 'rxjs';
+import {map, Subject, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-hero-select',
   templateUrl: './hero-select.component.html',
   styleUrls: ['./hero-select.component.css'],
 })
-export class HeroSelectComponent {
-  heroes: Hero[] = [];
+export class HeroSelectComponent implements OnInit, OnDestroy {
+  heroes = new Subject<Hero[]>();
+  heroesSub?: Subscription;
+
+  heroSearchOutput: Hero[] = [];
 
   @ViewChild('input') input: any;
 
@@ -21,16 +23,19 @@ export class HeroSelectComponent {
   recentSearches: string[] = [];
 
   constructor(
-    private fetchService: FetchHeroesService,
-    private heroStoreService: HeroStoreService
+    private fetchService: FetchHeroesService
   ) {}
 
-  onLetterSelected(letter: Letters) {
+  ngOnInit(): void {
+    this.heroesSub = this.heroes.subscribe((output: Hero[]) => this.heroSearchOutput = output);
+  }
+
+  onLetterSelected(letter: Letters): void {
     this.input.nativeElement.value = letter;
     this.search(letter, true);
   }
 
-  addToRecentSearches(term: string) {
+  addToRecentSearches(term: string): void {
     if (!this.recentSearches.includes(term)) {
       this.recentSearches.unshift(term);
     }
@@ -40,8 +45,7 @@ export class HeroSelectComponent {
     }
   }
 
-
-  onSubmit(form: NgForm) {
+  onSubmit(form: NgForm): void {
     const term = form.value.search;
     this.search(term);
     this.addToRecentSearches(term);
@@ -51,7 +55,7 @@ export class HeroSelectComponent {
   search(term: string, letterSearch = false): void {
     if (!letterSearch) {
       this.fetchService.fetchHeroesByName(term).subscribe((heroes) => {
-        this.heroes = heroes;
+        this.heroes.next(heroes);
       });
       return;
     }
@@ -65,11 +69,19 @@ export class HeroSelectComponent {
           });
         })
       )
-      .subscribe((heroes) => {
-        this.heroes = heroes;
-      },
-        error => {
-          console.log(error)
-        });
+      .subscribe({
+        next: (heroes: Hero[]) => {
+          this.heroes.next(heroes);
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
+  }
+
+  ngOnDestroy(): void {
+    if (this.heroesSub) {
+      this.heroesSub.unsubscribe();
+    }
   }
 }

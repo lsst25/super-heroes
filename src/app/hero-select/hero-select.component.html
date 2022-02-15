@@ -29,8 +29,8 @@
       <!--          ---------------------------------------                      -->
       <div class="mb-3"></div>
       <output>
-        <h4 *ngIf="heroes.length > 0">Results:</h4>
-        <app-hero-card *ngFor="let hero of heroes" [hero]="hero"></app-hero-card>
+        <h4 *ngIf="heroes">Results:</h4>
+        <app-hero-card *ngFor="let hero of heroSearchOutput" [hero]="hero"></app-hero-card>
       </output>
     </form>
   </div>

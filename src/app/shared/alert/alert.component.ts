@@ -1,19 +1,15 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-alert',
   templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.css']
+  styleUrls: ['./alert.component.css'],
 })
-export class AlertComponent implements OnInit {
-  @Input() message: string | undefined;
-  @Output() close = new EventEmitter<void>();
-  constructor() { }
+export class AlertComponent {
+  @Input() message!: string;
+  @Output() readonly close = new EventEmitter<void>();
 
-  ngOnInit(): void {
-  }
-
-  onClose() {
+  onClose(): void {
     this.close.emit();
   }
 }

@@ -24,11 +24,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.loginService.autoLogin();
   }
 
-  onLogout() {
+  onLogout(): void {
     this.loginService.logout();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.userSub) {
       this.userSub.unsubscribe();
     }

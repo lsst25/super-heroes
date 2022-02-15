@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {Hero} from "../hero.model";
-import {HeroStoreService} from "../hero-store.service";
-import {FetchHeroesService} from "../fetch-heroes.service";
-import {BattleService} from "../battle.service";
+import { Hero } from '../hero.model';
+import { HeroStoreService } from '../hero-store.service';
+import { FetchHeroesService } from '../fetch-heroes.service';
+import { BattleService } from '../battle.service';
 
 @Component({
   selector: 'app-battle',
   templateUrl: './battle.component.html',
-  styleUrls: ['./battle.component.css']
+  styleUrls: ['./battle.component.css'],
 })
 export class BattleComponent implements OnInit {
-
   ownHero!: Hero;
   enemyHero!: Hero;
 
@@ -18,38 +17,38 @@ export class BattleComponent implements OnInit {
 
   winner: string | null = null;
 
-  constructor(private heroStoreService: HeroStoreService,
-              private fetchHeroService: FetchHeroesService,
-              private battle: BattleService) { }
+  constructor(
+    private heroStoreService: HeroStoreService,
+    private fetchHeroService: FetchHeroesService,
+    private battle: BattleService
+  ) {}
 
   ngOnInit(): void {
     this.ownHero = this.heroStoreService.lastSelectedHero as Hero;
     this.getRandomHero();
   }
 
-  onResultsClose() {
+  onResultsClose(): void {
     this.winner = null;
   }
 
-  onFight() {
+  onFight(): void {
     this.fighting = true;
-    this.heroStoreService.selectedPowerupsIds.forEach(powerupId => {
+    this.heroStoreService.selectedPowerupsIds.forEach((powerupId) => {
       this.heroStoreService.usePowerup(powerupId);
     });
     this.heroStoreService.selectedPowerups = [];
-    this.battle.battle(this.ownHero as Hero, this.enemyHero as Hero).subscribe((winner: Hero) => {
-
-      this.winner = winner.name + ' won the fight!';
-      this.fighting = false;
-    })
-
+    this.battle
+      .battle(this.ownHero as Hero, this.enemyHero as Hero)
+      .subscribe((winner: Hero) => {
+        this.winner = winner.name + ' won the fight!';
+        this.fighting = false;
+      });
   }
 
-  getRandomHero() {
-    this.fetchHeroService.fetchRandomHero().subscribe(
-      (hero: Hero) => {
-        this.enemyHero = hero;
-      }
-    );
+  getRandomHero(): void {
+    this.fetchHeroService.fetchRandomHero().subscribe((hero: Hero) => {
+      this.enemyHero = hero;
+    });
   }
 }

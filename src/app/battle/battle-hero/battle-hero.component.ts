@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Hero} from "../../hero.model";
 
 @Component({
@@ -6,13 +6,6 @@ import {Hero} from "../../hero.model";
   templateUrl: './battle-hero.component.html',
   styleUrls: ['./battle-hero.component.css']
 })
-export class BattleHeroComponent implements OnInit {
-   // @Input() own!: boolean;
+export class BattleHeroComponent {
    @Input() hero?: Hero;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LoginService } from './login.service';
 import { User } from '../user.model';
@@ -9,25 +9,22 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   mode: 'login' | 'newAccount' = 'login';
 
-  emailInputValue?: string;
+  emailInputValue = '';
 
-  // passwordPattern = /(?=.*\d)(?=.*[A-Z])(?=.*\W)/;
   usernamePattern = /^[a-zA-Z]+(\s|-|[A-Z])[a-zA-Z]+$/;
   emailPattern = /^\w*\.?\w*\.?\w*\.?\w*@\w{1,5}\.(com|net|org|co|us)$/;
   passwordPattern = /(?=.*\d)(?=.*\p{Lu})(?=.*\W)/u;
 
   constructor(private loginService: LoginService, private router: Router) {}
 
-  ngOnInit(): void {}
-
-  onCreateNewAccount() {
+  onCreateNewAccount(): void {
     this.switchMode();
   }
 
-  switchMode() {
+  switchMode(): void {
     if (this.mode === 'login') {
       this.mode = 'newAccount';
       return;
@@ -35,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.mode = 'login';
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit(form: NgForm): void {
     const { username, email, password } = form.value;
     let success = false;
 

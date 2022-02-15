@@ -9,19 +9,19 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
   private users: User[] = [];
-  private authenticated: boolean = false;
+  private authenticated = false;
 
   currentUser = new Subject<User | null>();
   error = new Subject<string>();
-  sessionDurationLimit = 3.6e6; // 3.6e6 - 1h
+  sessionDurationLimit = 3.6e6;
 
   constructor(private storageService: StorageService, private router: Router) {}
 
-  get isLoggedIn() {
+  get isLoggedIn(): boolean {
     return this.authenticated;
   }
 
-  autoLogin() {
+  autoLogin(): void {
     const userFromStorage: User = this.storageService.getFromStorage('user');
     const token = this.storageService.getFromStorage('token');
     const tokenIsValid =
@@ -32,7 +32,12 @@ export class LoginService {
     }
 
     if (!tokenIsValid) {
-      this.storageService.removeFromStorage('token', 'user', 'selectedHeroes', 'lastSelectedHero');
+      this.storageService.removeFromStorage(
+        'token',
+        'user',
+        'selectedHeroes',
+        'lastSelectedHero'
+      );
 
       this.router.navigate(['login']);
       this.error.next(
@@ -49,7 +54,7 @@ export class LoginService {
     }
   }
 
-  login(email: string, password: string, autologin = false) {
+  login(email: string, password: string, autologin = false): boolean {
     const user = this.getUser(email);
 
     if (!user) {
@@ -73,21 +78,26 @@ export class LoginService {
     return false;
   }
 
-  logout() {
+  logout(): void {
     this.currentUser.next(null);
-    this.storageService.removeFromStorage('user', 'token', 'selectedHeroes', 'lastSelectedHero');
+    this.storageService.removeFromStorage(
+      'user',
+      'token',
+      'selectedHeroes',
+      'lastSelectedHero'
+    );
     this.router.navigate(['login']);
   }
 
-  getUser(email: string) {
+  getUser(email: string): User | undefined {
     return this.users.find((user: User) => user.email === email);
   }
 
-  setUsers() {
+  setUsers(): void {
     this.users = this.storageService.getFromStorage('users') || [];
   }
 
-  addUser(newUser: User) {
+  addUser(newUser: User): boolean {
     if (!this.users.find((user: User) => user.email === newUser.email)) {
       this.users.push(newUser);
       this.storageService.addToStorage('users', this.users);

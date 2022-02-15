@@ -4,7 +4,12 @@ import { environment } from '../environments/environment';
 import { map, Observable } from 'rxjs';
 import { Hero } from './hero.model';
 
-type Response = { response: string, results?: Hero[], error?: string, 'results-for': string };
+type Response = {
+  response: string;
+  results?: Hero[];
+  error?: string;
+  'results-for': string;
+};
 
 @Injectable({
   providedIn: 'root',
@@ -16,26 +21,22 @@ export class FetchHeroesService {
 
   url = environment.apiUrl + environment.apiToken;
 
-  fetchHeroById(id: number) {
+  fetchHeroById(id: number): Observable<Hero> {
     return this.http.get<Hero>(this.url + id);
   }
 
   fetchHeroesByName(name: string): Observable<Hero[]> {
-    return this.http
-      .get<Response>(
-        this.url + 'search/' + name
-      )
-      .pipe(
-        map((response: Response) => {
-          if (response.response === 'error') {
-            return [] as Hero[];
-          }
-          return response.results as Hero[];
-        })
-      );
+    return this.http.get<Response>(this.url + 'search/' + name).pipe(
+      map((response: Response) => {
+        if (response.response === 'error') {
+          return [] as Hero[];
+        }
+        return response.results as Hero[];
+      })
+    );
   }
 
-  fetchRandomHero() {
+  fetchRandomHero(): Observable<Hero> {
     return this.http.get<Hero>(
       this.url + Math.floor(Math.random() * this.heroesOverall)
     );
