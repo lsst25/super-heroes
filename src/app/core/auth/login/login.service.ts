@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { User } from '../user.model';
+import { User } from '../../../models/user.model';
 import { Subject } from 'rxjs';
-import { StorageService } from '../storage.service';
+import { StorageService } from '../../../shared/storage.service';
 import { Router } from '@angular/router';
 
 @Injectable({

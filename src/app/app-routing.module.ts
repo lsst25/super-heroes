@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { HeroSelectComponent } from './hero-select/hero-select.component';
-import { BattleComponent } from './battle/battle.component';
-import { UserInfoComponent } from './user-info/user-info.component';
-import { HeroesComponent } from './user-info/heroes/heroes.component';
-import { HistoryComponent } from './user-info/history/history.component';
-import { PowerupsComponent } from './user-info/powerups/powerups.component';
-import { LoginGuardService } from './login/login-guard.service';
-import {BattleGuardService} from "./battle/battle.guard.service";
-import {HeroInfoComponent} from "./hero-info/hero-info.component";
+import { LoginComponent } from './core/auth/login/login.component';
+import { HeroSelectComponent } from './main/hero-select/hero-select.component';
+import { BattleComponent } from './main/battle/battle.component';
+import { UserInfoComponent } from './main/user-info/user-info.component';
+import { HeroesComponent } from './main/user-info/heroes/heroes.component';
+import { HistoryComponent } from './main/user-info/history/history.component';
+import { PowerupsComponent } from './main/user-info/powerups/powerups.component';
+import { LoginGuardService } from './core/auth/login/guards/login-guard.service';
+import {BattleGuardService} from "./main/battle/battle.guard.service";
+import {HeroInfoComponent} from "./main/hero-info/hero-info.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'select', pathMatch: 'full' },

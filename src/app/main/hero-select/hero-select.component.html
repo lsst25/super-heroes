@@ -22,14 +22,14 @@
       </div>
       <!--    Recent searches-->
       <mat-chip-list aria-label="Recent searches">
-        <mat-chip *ngFor="let term of recentSearches" (click)="search(term)">
+        <mat-chip *ngFor="let term of recentSearches" (click)="onSearch(term)">
           {{ term }}
         </mat-chip>
       </mat-chip-list>
       <!--          ---------------------------------------                      -->
       <div class="mb-3"></div>
       <output>
-        <h4 *ngIf="heroes">Results:</h4>
+        <h4 *ngIf="heroSearchOutput">Results:</h4>
         <app-hero-card *ngFor="let hero of heroSearchOutput" [hero]="hero"></app-hero-card>
       </output>
     </form>

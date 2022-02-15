@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Hero } from './hero.model';
+import { Hero } from '../../models/hero.model';
 import {delay, Observable, of} from 'rxjs';
-import {StorageService} from "./storage.service";
+import {StorageService} from "../../shared/storage.service";
 
 export class Battle {
   constructor(

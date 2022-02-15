@@ -7,7 +7,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { HeroStoreService, Powerup } from '../../hero-store.service';
+import { HeroStoreService, Powerup } from '../../../shared/hero-store.service';
 
 @Component({
   selector: 'app-battle-menu',

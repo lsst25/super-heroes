@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero.model';
-import { HeroStoreService } from '../hero-store.service';
-import { FetchHeroesService } from '../fetch-heroes.service';
-import { BattleService } from '../battle.service';
+import { Hero } from '../../models/hero.model';
+import { HeroStoreService } from '../../shared/hero-store.service';
+import { FetchHeroesService } from '../../shared/fetch-heroes.service';
+import { BattleService } from './battle.service';
 
 @Component({
   selector: 'app-battle',

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Hero } from './hero.model';
+import { Hero } from '../models/hero.model';
 import { StorageService } from './storage.service';
 
 export type Powerup = {

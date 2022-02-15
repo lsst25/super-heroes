@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { LoginService } from './login/login.service';
-import { HeroStoreService } from './hero-store.service';
-import { BattleService } from './battle.service';
+import { LoginService } from './core/auth/login/login.service';
+import { HeroStoreService } from './shared/hero-store.service';
+import { BattleService } from './main/battle/battle.service';
 import { Subscription } from 'rxjs';
-import { User } from './user.model';
+import { User } from './models/user.model';
 
 @Component({
   selector: 'app-root',
