@@ -1,14 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { LoginService } from './core/auth/login/login.service';
-import { HeroStoreService } from './shared/hero-store.service';
-import { BattleService } from './main/battle/battle.service';
-import { Subscription } from 'rxjs';
-import { User } from './models/user.model';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
+import {LoginService} from './core/auth/login/login.service';
+import {HeroStoreService} from './shared/hero-store.service';
+import {BattleService} from './main/battle/battle.service';
+import {Subscription} from 'rxjs';
+import {User} from './models/user.model';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'trainee-heroes-app';

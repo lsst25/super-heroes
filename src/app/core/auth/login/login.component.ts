@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { LoginService } from './login.service';
-import { User } from '../../../models/user.model';
-import { Router } from '@angular/router';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {LoginService} from './login.service';
+import {User} from '../../../models/user.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent {
   mode: 'login' | 'newAccount' = 'login';

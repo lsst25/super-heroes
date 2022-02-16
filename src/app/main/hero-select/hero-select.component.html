@@ -27,11 +27,7 @@
         </mat-chip>
       </mat-chip-list>
       <!--          ---------------------------------------                      -->
-      <div class="mb-3"></div>
-      <output>
-        <h4 *ngIf="heroSearchOutput">Results:</h4>
-        <app-hero-card *ngFor="let hero of heroSearchOutput" [hero]="hero"></app-hero-card>
-      </output>
+      <app-search-output [output]="heroSearchOutput"></app-search-output>
     </form>
   </div>
 </div>

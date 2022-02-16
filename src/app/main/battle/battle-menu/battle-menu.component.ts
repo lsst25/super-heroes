@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -13,6 +14,7 @@ import { HeroStoreService, Powerup } from '../../../shared/hero-store.service';
   selector: 'app-battle-menu',
   templateUrl: './battle-menu.component.html',
   styleUrls: ['./battle-menu.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BattleMenuComponent implements OnInit, OnChanges {
   @Input() ownHeroName!: string;

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 
 export type Letters =
   | 'a'
@@ -32,6 +32,7 @@ export type Letters =
   selector: 'app-alphabetical',
   templateUrl: './alphabetical.component.html',
   styleUrls: ['./alphabetical.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AlphabeticalComponent {
   @Output() readonly letter = new EventEmitter<Letters>();

@@ -19,7 +19,8 @@ import { HeroCardComponent } from './shared/hero-card/hero-card.component';
 import { BattleHeroComponent } from './main/battle/battle-hero/battle-hero.component';
 import { BattleMenuComponent } from './main/battle/battle-menu/battle-menu.component';
 import { HeroInfoComponent } from './main/hero-info/hero-info.component';
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './shared/material.module';
+import { SearchOutputComponent } from './main/hero-select/search-output/search-output.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { MaterialModule } from './material.module';
     BattleHeroComponent,
     BattleMenuComponent,
     HeroInfoComponent,
+    SearchOutputComponent,
   ],
   imports: [
     AppRoutingModule,

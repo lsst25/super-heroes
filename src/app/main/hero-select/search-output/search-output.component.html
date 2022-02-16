@@ -1,0 +1,4 @@
+<output>
+  <h3 *ngIf="output.length > 0" class="title">Results:</h3>
+  <app-hero-card *ngFor="let hero of output" [hero]="hero"></app-hero-card>
+</output>

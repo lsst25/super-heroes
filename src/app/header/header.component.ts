@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LoginService } from '../core/auth/login/login.service';
 import { User } from '../models/user.model';
@@ -7,6 +7,7 @@ import { User } from '../models/user.model';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isLoggedIn = false;

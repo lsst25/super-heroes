@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import { Hero } from '../../../models/hero.model';
 import { HeroStoreService } from '../../../shared/hero-store.service';
 
@@ -6,6 +6,7 @@ import { HeroStoreService } from '../../../shared/hero-store.service';
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeroesComponent implements OnInit {
   heroes: Hero[] = [];
