@@ -21,6 +21,7 @@ import { BattleMenuComponent } from './main/battle/battle-menu/battle-menu.compo
 import { HeroInfoComponent } from './main/hero-info/hero-info.component';
 import { MaterialModule } from './shared/material.module';
 import { SearchOutputComponent } from './main/hero-select/search-output/search-output.component';
+import { LoadChildDirective } from './load-child.directive';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { SearchOutputComponent } from './main/hero-select/search-output/search-o
     BattleMenuComponent,
     HeroInfoComponent,
     SearchOutputComponent,
+    LoadChildDirective
   ],
   imports: [
     AppRoutingModule,

@@ -1,17 +1,27 @@
-import {AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild} from '@angular/core';
-import { Battle, BattleService } from '../../battle/battle.service';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { BattleService } from '../../battle/battle.service';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Subscription } from 'rxjs';
+import {Battle} from "../../../models/battle.model";
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HistoryComponent implements OnInit, AfterViewInit {
-  battleHistory: Battle[] = [];
-  dataSource = new MatTableDataSource(this.battleService.battles);
+export class HistoryComponent implements OnInit, AfterViewInit, OnDestroy {
+  battles: Battle[] = [];
+  battlesSub?: Subscription;
+  dataSource?: any;
 
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -20,10 +30,17 @@ export class HistoryComponent implements OnInit, AfterViewInit {
   constructor(private battleService: BattleService) {}
 
   ngOnInit(): void {
-    this.battleHistory = this.battleService.battles;
+    this.battlesSub = this.battleService.battlesSubject.subscribe((battles) => {
+      this.battles = battles;
+    });
+    this.dataSource = new MatTableDataSource(this.battles);
   }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
+  }
+
+  ngOnDestroy(): void {
+    this.battlesSub?.unsubscribe();
   }
 }

@@ -11,6 +11,7 @@ export class LoginService {
   private users: User[] = [];
   private authenticated = false;
 
+  userKey?: string;
   currentUser = new Subject<User | null>();
   error = new Subject<string>();
   sessionDurationLimit = 3.6e6;
@@ -64,6 +65,7 @@ export class LoginService {
     }
     if (user.password === password) {
       this.currentUser.next(user);
+      this.userKey = user.email + user.username;
       this.storageService.addToStorage('user', user);
 
       if (!autologin) {
@@ -82,14 +84,12 @@ export class LoginService {
     this.currentUser.next(null);
     this.storageService.removeFromStorage(
       'user',
-      'token',
-      'selectedHeroes',
-      'lastSelectedHero'
+      'token'
     );
     this.router.navigate(['login']);
   }
 
-  getUser(email: string): User | undefined {
+  private getUser(email: string): User | undefined {
     return this.users.find((user: User) => user.email === email);
   }
 

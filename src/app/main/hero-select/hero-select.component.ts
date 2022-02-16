@@ -9,9 +9,10 @@ import {
 } from '@angular/core';
 import {Hero} from '../../models/hero.model';
 import {NgForm} from '@angular/forms';
-import {Letters} from '../../shared/alphabetical/alphabetical.component';
 import {Subscription} from 'rxjs';
 import {HeroSearchService} from './hero-search.service';
+import {Letter} from "../../models/letters.model";
+import {StateStoreService} from "../../state-store.service";
 
 @Component({
   selector: 'app-hero-select',
@@ -29,7 +30,8 @@ export class HeroSelectComponent implements OnInit, OnDestroy {
   recentSearches: string[] = [];
 
   constructor(private searchService: HeroSearchService,
-              private cd: ChangeDetectorRef) {}
+              private cd: ChangeDetectorRef,
+              private state: StateStoreService) {}
 
   ngOnInit(): void {
     this.heroesSub = this.searchService.heroes.subscribe(
@@ -38,13 +40,14 @@ export class HeroSelectComponent implements OnInit, OnDestroy {
         this.cd.detectChanges();
       }
     );
+    this.recentSearches = this.state.getRecentSearches();
   }
 
   onSearch(term: string) {
     this.searchService.search(term);
   }
 
-  onLetterSelected(letter: Letters): void {
+  onLetterSelected(letter: Letter): void {
     this.input.nativeElement.value = letter;
     this.searchService.search(letter, true);
   }
@@ -54,9 +57,10 @@ export class HeroSelectComponent implements OnInit, OnDestroy {
       this.recentSearches.unshift(term);
     }
 
-    if (this.recentSearches.length > 3) {
+    if (this.recentSearches.length > 4) {
       this.recentSearches.pop();
     }
+    this.state.updateRecentSearches([...this.recentSearches]);
   }
 
   onSubmit(form: NgForm): void {

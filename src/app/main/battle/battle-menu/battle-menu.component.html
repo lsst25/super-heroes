@@ -23,9 +23,9 @@
 
     <ul class="powerups-list">
       <li
-        *ngFor="let powerup of powerups; index as i"
-        [ngClass]="{ selected: isSelectedPowerup(i) }"
-        (click)="onSelectPowerup(i)"
+        *ngFor="let powerup of powerups"
+        [ngClass]="{ selected: powerup.selected }"
+        (click)="onSelectPowerup(powerup.id)"
       >
         <p>{{ powerup.title }}</p>
       </li>

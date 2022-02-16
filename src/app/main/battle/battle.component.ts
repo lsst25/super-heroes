@@ -1,17 +1,25 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { Hero } from '../../models/hero.model';
 import { HeroStoreService } from '../../shared/hero-store.service';
 import { FetchHeroesService } from '../../shared/fetch-heroes.service';
 import { BattleService } from './battle.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-battle',
   templateUrl: './battle.component.html',
   styleUrls: ['./battle.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BattleComponent implements OnInit {
+export class BattleComponent implements OnInit, OnDestroy {
   ownHero!: Hero;
+  ownHeroSub?: Subscription;
   enemyHero!: Hero;
 
   fighting = false;
@@ -26,7 +34,9 @@ export class BattleComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.ownHero = this.heroStoreService.lastSelectedHero as Hero;
+    this.ownHeroSub = this.heroStoreService.selectedHeroSubject.subscribe(
+      (hero) => (this.ownHero = hero as Hero)
+    );
     this.getRandomHero();
   }
 
@@ -36,10 +46,8 @@ export class BattleComponent implements OnInit {
 
   onFight(): void {
     this.fighting = true;
-    this.heroStoreService.selectedPowerupsIds.forEach((powerupId) => {
-      this.heroStoreService.usePowerup(powerupId);
-    });
-    this.heroStoreService.selectedPowerups = [];
+    this.heroStoreService.usePowerups();
+
     this.battle
       .battle(this.ownHero as Hero, this.enemyHero as Hero)
       .subscribe((winner: Hero) => {
@@ -54,5 +62,9 @@ export class BattleComponent implements OnInit {
       this.enemyHero = hero;
       this.cd.detectChanges();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.ownHeroSub?.unsubscribe();
   }
 }

@@ -18,8 +18,8 @@ export class StorageService {
   }
 
   removeFromStorage(...keys: string[]): void {
-    keys.forEach(key => {
+    keys.forEach((key) => {
       localStorage.removeItem(key);
-    })
+    });
   }
 }

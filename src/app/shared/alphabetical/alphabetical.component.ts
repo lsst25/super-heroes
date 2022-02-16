@@ -1,32 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
-
-export type Letters =
-  | 'a'
-  | 'b'
-  | 'c'
-  | 'd'
-  | 'e'
-  | 'f'
-  | 'g'
-  | 'h'
-  | 'i'
-  | 'j'
-  | 'k'
-  | 'l'
-  | 'm'
-  | 'n'
-  | 'o'
-  | 'p'
-  | 'q'
-  | 'r'
-  | 's'
-  | 't'
-  | 'u'
-  | 'v'
-  | 'w'
-  | 'x'
-  | 'y'
-  | 'z';
+import {letters, Letter} from "../../models/letters.model";
 
 @Component({
   selector: 'app-alphabetical',
@@ -35,17 +8,17 @@ export type Letters =
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AlphabeticalComponent {
-  @Output() readonly letter = new EventEmitter<Letters>();
+  @Output() readonly letter = new EventEmitter<Letter>();
 
-  selectedLetter: Letters = 'a';
-  alphabet: Letters[] = 'abcdefghijklmnopqrstuvwxyz'.split('') as Letters[];
+  selectedLetter: Letter = 'a';
+  alphabet: Letter[] = letters;
   opened = false;
 
-  selectLetter(letter: Letters): void {
+  selectLetter(letter: Letter): void {
     this.selectedLetter = letter;
   }
 
-  onSelectClick(letter: Letters): void {
+  onSelectClick(letter: Letter): void {
     this.selectedLetter = letter;
     this.letter.emit(letter);
     this.opened = !this.opened;

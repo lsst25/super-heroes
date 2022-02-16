@@ -1,4 +1,6 @@
+<h3 *ngIf="battles.length === 0">No history yet.</h3>
 <table
+  *ngIf="battles.length > 0"
   mat-table
   matSort
   [dataSource]="dataSource"
