@@ -21,11 +21,13 @@ export class LoginComponent {
   authForm = this.fb.group({
     username: [
       '',
-      this.mode === 'newAccount' ? [
-        Validators.required,
-        Validators.minLength(8),
-        Validators.pattern(usernamePattern),
-      ] : null,
+      this.mode === 'newAccount'
+        ? [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.pattern(usernamePattern),
+          ]
+        : null,
     ],
     email: [
       '',
