@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import { HeroStoreService } from '../../../shared/hero-store.service';
+import { HeroStoreService } from '../../../shared/services/hero-store.service';
 import {Powerup} from "../../../models/powerup.model";
 
 @Component({

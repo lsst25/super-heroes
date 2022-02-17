@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {map, Subject} from "rxjs";
 import {Hero} from "../../models/hero.model";
-import {FetchHeroesService} from "../../shared/fetch-heroes.service";
+import {FetchHeroesService} from "../../shared/services/fetch-heroes.service";
 
 @Injectable({
   providedIn: 'root'

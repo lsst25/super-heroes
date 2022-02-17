@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
-import {letters, Letter} from "../../models/letters.model";
+import {letters, Letter} from "../../../models/letters.model";
 
 @Component({
   selector: 'app-alphabetical',

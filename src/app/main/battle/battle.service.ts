@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Hero } from '../../models/hero.model';
 import {BehaviorSubject, delay, Observable, of} from 'rxjs';
-import { StorageService } from '../../shared/storage.service';
+import { StorageService } from '../../shared/services/storage.service';
 import { Battle } from '../../models/battle.model';
-import {StateStoreService} from "../../state-store.service";
+import {StateStoreService} from "../../shared/services/state-store.service";
 
 @Injectable({
   providedIn: 'root',

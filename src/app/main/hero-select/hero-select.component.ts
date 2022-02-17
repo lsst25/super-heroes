@@ -2,44 +2,47 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ElementRef,
   OnDestroy,
   OnInit,
-  ViewChild
 } from '@angular/core';
-import {Hero} from '../../models/hero.model';
-import {NgForm} from '@angular/forms';
-import {Subscription} from 'rxjs';
-import {HeroSearchService} from './hero-search.service';
-import {Letter} from "../../models/letters.model";
-import {StateStoreService} from "../../state-store.service";
+import { Hero } from '../../models/hero.model';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { HeroSearchService } from './hero-search.service';
+import { Letter } from '../../models/letters.model';
+import { StateStoreService } from '../../shared/services/state-store.service';
+import { searchPattern } from '../../shared/constatnts';
 
 @Component({
   selector: 'app-hero-select',
   templateUrl: './hero-select.component.html',
   styleUrls: ['./hero-select.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroSelectComponent implements OnInit, OnDestroy {
   heroesSub?: Subscription;
-
   heroSearchOutput: Hero[] = [];
 
-  @ViewChild('input') input!: ElementRef;
-  searchPattern = /(^([a-zA-Z][a-zA-Z -]*[a-zA-Z])$)|^[a-zA-Z]$/;
+  searchForm = new FormGroup({
+    searchInput: new FormControl('', [
+      Validators.required,
+      Validators.pattern(searchPattern),
+    ]),
+  });
+
   recentSearches: string[] = [];
 
-  constructor(private searchService: HeroSearchService,
-              private cd: ChangeDetectorRef,
-              private state: StateStoreService) {}
+  constructor(
+    private searchService: HeroSearchService,
+    private cd: ChangeDetectorRef,
+    private state: StateStoreService
+  ) {}
 
   ngOnInit(): void {
-    this.heroesSub = this.searchService.heroes.subscribe(
-      (output: Hero[]) => {
-        this.heroSearchOutput = output;
-        this.cd.detectChanges();
-      }
-    );
+    this.heroesSub = this.searchService.heroes.subscribe((output: Hero[]) => {
+      this.heroSearchOutput = output;
+      this.cd.detectChanges();
+    });
     this.recentSearches = this.state.getRecentSearches();
   }
 
@@ -48,7 +51,7 @@ export class HeroSelectComponent implements OnInit, OnDestroy {
   }
 
   onLetterSelected(letter: Letter): void {
-    this.input.nativeElement.value = letter;
+    (this.searchForm.get('searchInput') as FormControl).setValue(letter);
     this.searchService.search(letter, true);
   }
 
@@ -63,11 +66,13 @@ export class HeroSelectComponent implements OnInit, OnDestroy {
     this.state.updateRecentSearches([...this.recentSearches]);
   }
 
-  onSubmit(form: NgForm): void {
-    const term = form.value.search;
+  onSubmit(): void {
+    console.log(this.searchForm.value);
+    const term = (this.searchForm.get('searchInput') as FormControl).value;
+    console.log(this.searchForm.get('searchInput') as FormControl);
     this.searchService.search(term);
     this.addToRecentSearches(term);
-    form.reset();
+    this.searchForm.reset();
   }
 
   ngOnDestroy(): void {

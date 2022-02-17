@@ -6,8 +6,8 @@ import {
   OnInit,
 } from '@angular/core';
 import { Hero } from '../../models/hero.model';
-import { HeroStoreService } from '../../shared/hero-store.service';
-import { FetchHeroesService } from '../../shared/fetch-heroes.service';
+import { HeroStoreService } from '../../shared/services/hero-store.service';
+import { FetchHeroesService } from '../../shared/services/fetch-heroes.service';
 import { BattleService } from './battle.service';
 import { Subscription } from 'rxjs';
 

@@ -5,13 +5,13 @@ import {
   OnInit, ViewChild,
 } from '@angular/core';
 import { LoginService } from './core/auth/login/login.service';
-import { HeroStoreService } from './shared/hero-store.service';
+import { HeroStoreService } from './shared/services/hero-store.service';
 import { BattleService } from './main/battle/battle.service';
 import { Subscription } from 'rxjs';
 import { User } from './models/user.model';
-import { StateStoreService } from './state-store.service';
+import { StateStoreService } from './shared/services/state-store.service';
 import {LoadChildDirective} from "./load-child.directive";
-import {AlertComponent} from "./shared/alert/alert.component";
+import {AlertComponent} from "./shared/components/alert/alert.component";
 
 @Component({
   selector: 'app-root',
@@ -52,7 +52,7 @@ export class AppComponent implements OnInit, OnDestroy {
     );
   }
 
-  private loadDynamicAlert(message: string) {
+  private loadDynamicAlert(message: string): void {
     const componentRef = this.dynamicChild.viewContainerRef.createComponent(AlertComponent);
     componentRef.instance.message = message;
     componentRef.instance.close.subscribe( () => {

@@ -6,7 +6,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { HeroStoreService } from '../../shared/hero-store.service';
+import { HeroStoreService } from '../../shared/services/hero-store.service';
 
 @Injectable({
   providedIn: 'root',

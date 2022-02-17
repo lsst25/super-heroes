@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@an
 import { Location } from '@angular/common';
 import { Hero } from '../../models/hero.model';
 import { ActivatedRoute } from '@angular/router';
-import { FetchHeroesService } from '../../shared/fetch-heroes.service';
+import { FetchHeroesService } from '../../shared/services/fetch-heroes.service';
 
 @Component({
   selector: 'app-hero-info',

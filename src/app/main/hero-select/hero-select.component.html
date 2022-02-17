@@ -1,20 +1,17 @@
 
 <div class="row justify-content-center">
   <div class="col-12 col-xl-6">
-    <form (ngSubmit)="onSubmit(searchForm)" #searchForm="ngForm" class="form">
+    <form class="form" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
       <label for="search" class="form-label">Find hero</label>
       <div class="input-group mb-3">
         <app-alphabetical (letter)="onLetterSelected($event)"></app-alphabetical>
         <input
-          #input
-          ngModel
+          formControlName="searchInput"
           class="form-control"
           name="search"
           id="search"
           type="text"
           placeholder="Enter the hero name"
-          required
-          [pattern]="searchPattern"
         />
         <button mat-flat-button color="primary" [disabled]="searchForm.invalid">
           Search

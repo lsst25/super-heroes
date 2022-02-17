@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import { Hero } from '../../models/hero.model';
-import { HeroStoreService } from '../hero-store.service';
+import { Hero } from '../../../models/hero.model';
+import { HeroStoreService } from '../../services/hero-store.service';
 import { Router } from '@angular/router';
 
 @Component({

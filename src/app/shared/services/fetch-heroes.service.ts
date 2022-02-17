@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { map, Observable } from 'rxjs';
-import { Hero } from '../models/hero.model';
+import { Hero } from '../../models/hero.model';
 
 type Response = {
   response: string;

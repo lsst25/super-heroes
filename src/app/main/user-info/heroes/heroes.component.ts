@@ -5,7 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { Hero } from '../../../models/hero.model';
-import { HeroStoreService } from '../../../shared/hero-store.service';
+import { HeroStoreService } from '../../../shared/services/hero-store.service';
 import { Subscription } from 'rxjs';
 
 @Component({

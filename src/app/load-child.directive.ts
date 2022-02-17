@@ -4,7 +4,5 @@ import {Directive, ViewContainerRef} from '@angular/core';
   selector: '[adHost]'
 })
 export class LoadChildDirective {
-
   constructor(public viewContainerRef: ViewContainerRef) {}
-
 }

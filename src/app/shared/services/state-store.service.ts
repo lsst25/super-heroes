@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { UsersState } from './models/users-state.model';
-import { Hero } from './models/hero.model';
-import { StorageService } from './shared/storage.service';
-import { LoginService } from './core/auth/login/login.service';
-import {Battle} from "./models/battle.model";
-import {Powerup, powerups} from "./models/powerup.model";
+import { UsersState } from '../../models/users-state.model';
+import { Hero } from '../../models/hero.model';
+import { StorageService } from './storage.service';
+import { LoginService } from '../../core/auth/login/login.service';
+import {Battle} from "../../models/battle.model";
+import {Powerup, powerups} from "../../models/powerup.model";
 
 @Injectable({
   providedIn: 'root',
@@ -72,10 +72,7 @@ export class StateStoreService {
 
   getState(userKey: string) {
     const state = this.storage.getFromStorage(userKey);
-    console.log('user key: ' + userKey)
-    console.log(state)
     if (state) {
-      console.log(state)
       this.currentState = state;
     }
   }

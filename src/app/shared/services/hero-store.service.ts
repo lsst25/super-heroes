@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Hero } from '../models/hero.model';
-import { Powerup, powerups } from '../models/powerup.model';
+import { Hero } from '../../models/hero.model';
+import { Powerup, powerups } from '../../models/powerup.model';
 import { BehaviorSubject } from 'rxjs';
-import { StateStoreService } from '../state-store.service';
+import { StateStoreService } from './state-store.service';
 
 @Injectable({
   providedIn: 'root',
