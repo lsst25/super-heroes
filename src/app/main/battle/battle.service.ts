@@ -16,7 +16,17 @@ export class BattleService {
               private state: StateStoreService) {}
 
   battle(ownHero: Hero, enemyHero: Hero): Observable<Hero> {
-    const battleResult = Math.random() < 0.5;
+
+    let boost = 0;
+
+    boost = ownHero.powerstats.combat > enemyHero.powerstats.combat ? boost + 0.1 : boost;
+    boost = ownHero.powerstats.strength > enemyHero.powerstats.strength ? boost + 0.09 : boost;
+    boost = ownHero.powerstats.power > enemyHero.powerstats.power ? boost + 0.08 : boost;
+    boost = ownHero.powerstats.speed > enemyHero.powerstats.speed ? boost + 0.08 : boost;
+    boost = ownHero.powerstats.durability > enemyHero.powerstats.durability ? boost + 0.08 : boost;
+    boost = ownHero.powerstats.intelligence > enemyHero.powerstats.intelligence ? boost + 0.008 : boost;
+
+    const battleResult = Math.random() < 0.5 + boost;
     const winner = battleResult ? ownHero : enemyHero;
 
     this.addBattle(
