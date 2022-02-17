@@ -1,7 +1,7 @@
 <form
   class="form"
-  #authForm="ngForm"
-  (ngSubmit)="onSubmit(authForm)"
+  [formGroup]="authForm"
+  (ngSubmit)="onSubmit()"
 >
   <h4>Please enter your<span *ngIf="mode === 'newAccount'"> user name,</span> email and password</h4>
   <div
@@ -10,39 +10,30 @@
     <label for="username" class="form-label">User name</label>
     <input
       class="form-control"
-      [(ngModel)]="emailInputValue"
+      formControlName="username"
       name="username"
       id="username"
       type="text"
-      minlength="8"
-      required
-      [pattern]="usernamePattern"
     />
   </div>
   <div class="mb-3">
     <label for="email" class="form-label">Email</label>
     <input
       class="form-control"
-      ngModel
+      formControlName="email"
       name="email"
       id="email"
       type="email"
-      required
-      email
-      [pattern]="emailPattern"
     />
   </div>
   <div class="mb-3">
     <label for="password" class="form-label">Password</label>
     <input
       class="form-control"
-      ngModel
+      formControlName="password"
       name="password"
       id="password"
       type="password"
-      required
-      minlength="5"
-      [pattern]="passwordPattern"
     />
   </div>
 

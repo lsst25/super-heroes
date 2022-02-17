@@ -1,25 +1,51 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {LoginService} from './login.service';
-import {User} from '../../../models/user.model';
-import {Router} from '@angular/router';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { LoginService } from './login.service';
+import { User } from '../../../models/user.model';
+import { Router } from '@angular/router';
+import {
+  emailPattern,
+  passwordPattern,
+  usernamePattern,
+} from '../../../shared/constatnts';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
   mode: 'login' | 'newAccount' = 'login';
 
-  emailInputValue = '';
+  authForm = this.fb.group({
+    username: [
+      '',
+      this.mode === 'newAccount' ? [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(usernamePattern),
+      ] : null,
+    ],
+    email: [
+      '',
+      [Validators.required, Validators.email, Validators.pattern(emailPattern)],
+    ],
+    password: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.pattern(passwordPattern),
+      ],
+    ],
+  });
 
-  usernamePattern = /^[a-zA-Z]+(\s|-|[A-Z])[a-zA-Z]+$/;
-  emailPattern = /^\w*\.?\w*\.?\w*\.?\w*@\w{1,5}\.(com|net|org|co|us)$/;
-  passwordPattern = /(?=.*\d)(?=.*\p{Lu})(?=.*\W)/u;
-
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {}
 
   onCreateNewAccount(): void {
     this.switchMode();
@@ -28,13 +54,23 @@ export class LoginComponent {
   switchMode(): void {
     if (this.mode === 'login') {
       this.mode = 'newAccount';
+      (this.authForm.get('username') as FormControl).setValidators([
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(usernamePattern),
+      ]);
       return;
     }
     this.mode = 'login';
+    (this.authForm.get('username') as FormControl).clearValidators();
+    (this.authForm.get('username') as FormControl).reset();
   }
 
-  onSubmit(form: NgForm): void {
-    const { username, email, password } = form.value;
+  onSubmit(): void {
+    const username = (this.authForm.get('username') as FormControl).value;
+    const email = (this.authForm.get('email') as FormControl).value;
+    const password = (this.authForm.get('password') as FormControl).value;
+
     let success = false;
 
     if (this.mode === 'login') {
@@ -46,7 +82,7 @@ export class LoginComponent {
       success = this.loginService.addUser(newUser);
     }
 
-    form.reset();
+    this.authForm.reset();
 
     if (success && this.mode === 'login') {
       this.router.navigate(['select']);

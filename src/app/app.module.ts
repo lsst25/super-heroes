@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './core/auth/login/login.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HeroSelectComponent } from './main/hero-select/hero-select.component';
 import { BattleComponent } from './main/battle/battle.component';
 import { UserInfoComponent } from './main/user-info/user-info.component';
@@ -48,7 +48,6 @@ import { LoadChildDirective } from './load-child.directive';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule,
     ReactiveFormsModule,
     MaterialModule,
   ],
