@@ -23,6 +23,7 @@ export class BattleComponent implements OnInit, OnDestroy {
   enemyHero!: Hero;
 
   fighting = false;
+  battleSub?: Subscription;
 
   winner: string | null = null;
 
@@ -48,12 +49,13 @@ export class BattleComponent implements OnInit, OnDestroy {
     this.fighting = true;
     this.heroStoreService.usePowerups();
 
-    this.battle
+    this.battleSub = this.battle
       .battle(this.ownHero as Hero, this.enemyHero as Hero)
       .subscribe((winner: Hero) => {
         this.winner = winner.name + ' won the fight!';
         this.fighting = false;
         this.cd.detectChanges();
+        this.battleSub?.unsubscribe();
       });
   }
 
@@ -66,5 +68,6 @@ export class BattleComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.ownHeroSub?.unsubscribe();
+    this.battleSub?.unsubscribe();
   }
 }

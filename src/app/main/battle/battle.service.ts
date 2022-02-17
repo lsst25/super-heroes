@@ -33,7 +33,7 @@ export class BattleService {
     return of(winner).pipe(delay(5000));
   }
 
-  addBattle(battle: Battle): void {
+  private addBattle(battle: Battle): void {
     this.battles.push(battle);
 
     this.battlesSubject.next([...this.battles]);
