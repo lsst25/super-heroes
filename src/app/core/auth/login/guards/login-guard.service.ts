@@ -18,9 +18,14 @@ export class LoginGuardService implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean | UrlTree {
+
     if (this.loginService.isLoggedIn) {
+      if (state.url === '/login') {
+        return this.router.createUrlTree(['/select']);
+      }
       return true;
     }
+
     console.log('You shall not pass!');
     return this.router.createUrlTree(['/login']);
   }

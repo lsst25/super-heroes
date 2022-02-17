@@ -1,5 +1,11 @@
+a {
+  color: white;
+  text-decoration: none;
+}
+
 a:hover {
   color: white;
+  text-decoration: none;
 }
 
 ul {
@@ -18,9 +24,8 @@ li {
   align-items: center;
 }
 
-
 .active {
-  background-color: rgba(0, 0, 0, .2);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .spacer {

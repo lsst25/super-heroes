@@ -53,7 +53,7 @@ export class LoginComponent {
     this.switchMode();
   }
 
-  switchMode(): void {
+  private switchMode(): void {
     if (this.mode === 'login') {
       this.mode = 'newAccount';
       (this.authForm.get('username') as FormControl).setValidators([

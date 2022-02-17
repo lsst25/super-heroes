@@ -12,6 +12,7 @@ import { HeroSearchService } from './hero-search.service';
 import { Letter } from '../../models/letters.model';
 import { StateStoreService } from '../../shared/services/state-store.service';
 import { searchPattern } from '../../shared/constatnts';
+import {FetchHeroesService} from "../../shared/services/fetch-heroes.service";
 
 @Component({
   selector: 'app-hero-select',
@@ -35,10 +36,15 @@ export class HeroSelectComponent implements OnInit, OnDestroy {
   constructor(
     private searchService: HeroSearchService,
     private cd: ChangeDetectorRef,
-    private state: StateStoreService
+    private state: StateStoreService,
+    private fetchHeroes: FetchHeroesService
   ) {}
 
   ngOnInit(): void {
+    this.fetchHeroes.fetchRandomHero().subscribe(hero => {
+      this.heroSearchOutput = [hero];
+      this.cd.detectChanges();
+    })
     this.heroesSub = this.searchService.heroes.subscribe((output: Hero[]) => {
       this.heroSearchOutput = output;
       this.cd.detectChanges();

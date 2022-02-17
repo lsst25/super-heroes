@@ -16,7 +16,6 @@ export class BattleService {
               private state: StateStoreService) {}
 
   battle(ownHero: Hero, enemyHero: Hero): Observable<Hero> {
-
     let boost = 0;
 
     boost = ownHero.powerstats.combat > enemyHero.powerstats.combat ? boost + 0.1 : boost;
