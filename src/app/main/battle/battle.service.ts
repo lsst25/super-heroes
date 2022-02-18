@@ -18,12 +18,12 @@ export class BattleService {
   battle(ownHero: Hero, enemyHero: Hero): Observable<Hero> {
     let boost = 0;
 
-    boost = ownHero.powerstats.combat > enemyHero.powerstats.combat ? boost + 0.1 : boost;
-    boost = ownHero.powerstats.strength > enemyHero.powerstats.strength ? boost + 0.09 : boost;
-    boost = ownHero.powerstats.power > enemyHero.powerstats.power ? boost + 0.08 : boost;
-    boost = ownHero.powerstats.speed > enemyHero.powerstats.speed ? boost + 0.08 : boost;
-    boost = ownHero.powerstats.durability > enemyHero.powerstats.durability ? boost + 0.08 : boost;
-    boost = ownHero.powerstats.intelligence > enemyHero.powerstats.intelligence ? boost + 0.008 : boost;
+    boost = ownHero.powerstats.combat > enemyHero.powerstats.combat ? boost + 0.1 : boost - 0.1;
+    boost = ownHero.powerstats.strength > enemyHero.powerstats.strength ? boost + 0.09 : boost - 0.09;
+    boost = ownHero.powerstats.power > enemyHero.powerstats.power ? boost + 0.08 : boost - 0.08;
+    boost = ownHero.powerstats.speed > enemyHero.powerstats.speed ? boost + 0.08 : boost - 0.08;
+    boost = ownHero.powerstats.durability > enemyHero.powerstats.durability ? boost + 0.08 : boost - 0.08;
+    boost = ownHero.powerstats.intelligence > enemyHero.powerstats.intelligence ? boost + 0.008 : boost - 0.08;
 
     const battleResult = Math.random() < 0.5 + boost;
     const winner = battleResult ? ownHero : enemyHero;
