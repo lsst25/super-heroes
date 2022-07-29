@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1659107584805,
+  "timestamp": 1659108238552,
   "index": "https://lsst25.github.io/super-heroes/index.html",
   "assetGroups": [
     {
@@ -19,7 +19,7 @@
         "https://lsst25.github.io/super-heroes/common.f0f5a6ea2588a118.js",
         "https://lsst25.github.io/super-heroes/favicon.ico",
         "https://lsst25.github.io/super-heroes/index.html",
-        "https://lsst25.github.io/super-heroes/main.39ff3fb53d20a60e.js",
+        "https://lsst25.github.io/super-heroes/main.ea2a937be354bc16.js",
         "https://lsst25.github.io/super-heroes/manifest.webmanifest",
         "https://lsst25.github.io/super-heroes/polyfills.02ffa132683f8930.js",
         "https://lsst25.github.io/super-heroes/runtime.1e2f4fe96aedc956.js",
@@ -64,8 +64,8 @@
     "https://lsst25.github.io/super-heroes/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "https://lsst25.github.io/super-heroes/common.f0f5a6ea2588a118.js": "b10202489e5c2aa2057bf0ff47d2121ddd5466a5",
     "https://lsst25.github.io/super-heroes/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://lsst25.github.io/super-heroes/index.html": "0d14345e22aca833ceeecd0ef74df5da18fdeae3",
-    "https://lsst25.github.io/super-heroes/main.39ff3fb53d20a60e.js": "31e839c9ecb9cb597fa926e0aff3e8bfcc8a291a",
+    "https://lsst25.github.io/super-heroes/index.html": "4c1609b51ca357a3c1c9ecf0e0ca11269867791c",
+    "https://lsst25.github.io/super-heroes/main.ea2a937be354bc16.js": "c1c5a18575f965a2f9a5db65dd89f2b5a18130cf",
     "https://lsst25.github.io/super-heroes/manifest.webmanifest": "3e3a15779d138838bdf64c31f9b912785fa3d7d2",
     "https://lsst25.github.io/super-heroes/polyfills.02ffa132683f8930.js": "f85a46b677cb75d0872e95caf12bb59ffbd17083",
     "https://lsst25.github.io/super-heroes/runtime.1e2f4fe96aedc956.js": "0ed6417bf98de619ed19b3a3af3b89543f0afed4",
