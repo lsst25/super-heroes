@@ -1,0 +1,93 @@
+{
+  "configVersion": 1,
+  "timestamp": 1659104986064,
+  "index": "https://lsst25.github.io/super-heroes/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "https://lsst25.github.io/super-heroes/450.bc55674a90ed5509.js",
+        "https://lsst25.github.io/super-heroes/498.b4ba2abd3fc87e76.js",
+        "https://lsst25.github.io/super-heroes/571.ad168e7dde862d22.js",
+        "https://lsst25.github.io/super-heroes/681.bb50a70cbd299906.js",
+        "https://lsst25.github.io/super-heroes/737.dd37bdad0095ffc5.js",
+        "https://lsst25.github.io/super-heroes/common.f0f5a6ea2588a118.js",
+        "https://lsst25.github.io/super-heroes/favicon.ico",
+        "https://lsst25.github.io/super-heroes/index.html",
+        "https://lsst25.github.io/super-heroes/main.cdfde82dd7e3d005.js",
+        "https://lsst25.github.io/super-heroes/manifest.webmanifest",
+        "https://lsst25.github.io/super-heroes/polyfills.02ffa132683f8930.js",
+        "https://lsst25.github.io/super-heroes/runtime.1e2f4fe96aedc956.js",
+        "https://lsst25.github.io/super-heroes/styles.cda1ec07464f65ef.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "https://lsst25.github.io/super-heroes/assets/icons/icon-128x128.png",
+        "https://lsst25.github.io/super-heroes/assets/icons/icon-144x144.png",
+        "https://lsst25.github.io/super-heroes/assets/icons/icon-152x152.png",
+        "https://lsst25.github.io/super-heroes/assets/icons/icon-192x192.png",
+        "https://lsst25.github.io/super-heroes/assets/icons/icon-384x384.png",
+        "https://lsst25.github.io/super-heroes/assets/icons/icon-512x512.png",
+        "https://lsst25.github.io/super-heroes/assets/icons/icon-72x72.png",
+        "https://lsst25.github.io/super-heroes/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "https://lsst25.github.io/super-heroes/450.bc55674a90ed5509.js": "7f670f27e13d307b5c2fc831c748c86c6f4f6888",
+    "https://lsst25.github.io/super-heroes/498.b4ba2abd3fc87e76.js": "49d4c4dc01dc1ba3dba4a74eac2e8b42e39c3853",
+    "https://lsst25.github.io/super-heroes/571.ad168e7dde862d22.js": "31e4b117d5a1fcf4d28a716bd01e5dd634f508a1",
+    "https://lsst25.github.io/super-heroes/681.bb50a70cbd299906.js": "67514cca411571085adc822aab78bcc8d7e4d782",
+    "https://lsst25.github.io/super-heroes/737.dd37bdad0095ffc5.js": "43c24bfc902b664b02b2ed96cc09c1c83dcaf046",
+    "https://lsst25.github.io/super-heroes/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "https://lsst25.github.io/super-heroes/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "https://lsst25.github.io/super-heroes/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "https://lsst25.github.io/super-heroes/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "https://lsst25.github.io/super-heroes/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "https://lsst25.github.io/super-heroes/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "https://lsst25.github.io/super-heroes/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "https://lsst25.github.io/super-heroes/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "https://lsst25.github.io/super-heroes/common.f0f5a6ea2588a118.js": "b10202489e5c2aa2057bf0ff47d2121ddd5466a5",
+    "https://lsst25.github.io/super-heroes/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "https://lsst25.github.io/super-heroes/index.html": "3ea722e9e88144a555a3bb6809d6f068a76ed244",
+    "https://lsst25.github.io/super-heroes/main.cdfde82dd7e3d005.js": "687b6018e190332887388ac57cc2962e93ee4890",
+    "https://lsst25.github.io/super-heroes/manifest.webmanifest": "3e3a15779d138838bdf64c31f9b912785fa3d7d2",
+    "https://lsst25.github.io/super-heroes/polyfills.02ffa132683f8930.js": "f85a46b677cb75d0872e95caf12bb59ffbd17083",
+    "https://lsst25.github.io/super-heroes/runtime.1e2f4fe96aedc956.js": "0ed6417bf98de619ed19b3a3af3b89543f0afed4",
+    "https://lsst25.github.io/super-heroes/styles.cda1ec07464f65ef.css": "a87aeb3635e3079d8b5229309b5f92e682582d7c"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
